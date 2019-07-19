@@ -12,7 +12,7 @@ Update script and put automated process in the bottom inline function.
         //add action here, this will be run on
         //every site within the site collection
         //you run it on (including the current)
-	console.log(web.get_url());
+	  console.log(web.get_url());
      });
 
 
