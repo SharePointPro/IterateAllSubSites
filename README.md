@@ -19,5 +19,5 @@ Update script and put automated process in the bottom inline function.
 
 execute in Web Inspector
 
-*Examples*
+*Examples*  
 InstallApp.js - Iterates through every site of a site collection and installs an APP from the Site Collection App Catalog using Rest. This example also injects jquery to make REST calls easier.
