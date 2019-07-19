@@ -58,8 +58,8 @@ function inject(u, i) {
 }
 
 
-//Install App, in this case it is nin teh SiteCollection App Catalog, but may also be in tennant App Catalog
-//I also predetermined the Apps ID
+//Install App, in this case it is in the SiteCollection App Catalog, but may also be in tennant App Catalog
+//I have also predetermined the Apps ID
 //More Information here: https://docs.microsoft.com/en-us/sharepoint/dev/apis/alm-api-for-spfx-add-ins
 function installApp(url) {
     const app_id = 'cc99611f-ebfc-4c26-bb19-be0125b334f8';
