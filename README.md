@@ -1,4 +1,4 @@
-# IterateAllSubSites
+# Iterate and execute code on all SharePoint Sites
 The SharePoint Client Side Object Model is extremely powerful. 
 
 In larger enterprise SharePoint sites I have found it useful to be able to itterate through every site to automate actions.
