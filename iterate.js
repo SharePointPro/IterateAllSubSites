@@ -1,5 +1,5 @@
 
-const itterate = async (functionToCall) => {
+const iterate = async (functionToCall) => {
 	let clientContext;
 
 	//Recursive function, gets all the webs in the supplied web
@@ -45,7 +45,7 @@ const itterate = async (functionToCall) => {
 	await getWebs(clientContext.get_web());
 }
 
-itterate((web, clientContext) => {
+iterate((web, clientContext) => {
     //add action here, this will be run on
     //every site within the site collection
     //you run it on (including the current)
