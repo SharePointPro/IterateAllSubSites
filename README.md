@@ -8,12 +8,13 @@ This simple script can be run from Chrome Web Inspector. I have used it to bulk 
 *usage*  
 Update script and put automated process in the bottom inline function.
 
-itterate((web, clientContext) => {
-    //add action here, this will be run on
-    //every site within the site collection
-    //you run it on (including the current)
+    itterate((web, clientContext) => {
+        //add action here, this will be run on
+        //every site within the site collection
+        //you run it on (including the current)
 	console.log(web.get_url());
-})
+     });
+
 
 
 execute in Web Inspector
