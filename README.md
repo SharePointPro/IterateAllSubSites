@@ -5,7 +5,7 @@ In larger enterprise SharePoint sites I have found it useful to be able to itera
 
 This simple script can be run from Chrome Web Inspector. I have used it to bulk install apps, activate features, create site maps, enable workflows ect.
 
-*usage*  
+# Usage  
 Update script and put automated process in the bottom inline function.
 
     iterate((web, clientContext) => {
@@ -19,5 +19,5 @@ Update script and put automated process in the bottom inline function.
 
 execute in Web Inspector
 
-*Examples*  
-_InstallApp.js_ - Iterates through every site of a site collection and installs an APP from the Site Collection App Catalog using Rest. This example also injects jquery to make REST calls easier.
+# Examples  
+*InstallApp.js* - Iterates through every site of a site collection and installs an APP from the Site Collection App Catalog using Rest. This example also injects jquery to make REST calls easier.
