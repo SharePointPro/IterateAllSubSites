@@ -16,7 +16,7 @@ const updateRolesWithPermission = async (clientContext) => {
     await processRoleAssignments(clientContext, roles);
 }
 
-//Itterate through all the role assignments. Role Assignments have Role Defintion Bindings which hold the permission level
+//Iterate through all the role assignments. Role Assignments have Role Defintion Bindings which hold the permission level
 //and a member which is either the group or user that the permissions relate to
 //More information: https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ff409736%28v%3doffice.14%29
 const processRoleAssignments = async (clientContext, roles) => {
