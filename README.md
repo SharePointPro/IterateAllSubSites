@@ -21,3 +21,7 @@ execute in Web Inspector
 
 # Examples  
 *InstallApp.js* - Iterates through every site of a site collection and installs an APP from the Site Collection App Catalog using Rest. This example also injects jquery to make REST calls easier.
+
+*ReplacePermissions.js*:  - Itterate through every site in site collection and update the all Full Control roles.
+
+Scenario: All sites in a site collection needed to have all site owners removed from "Full Control" to "Full Control - No Subsite Creation" so that subsites could only be created by Site Collection Administrators. Script was created to itterate through every site (using a recursive script I have already created https://github.com/SharePointPro/IterateAllSubSites/ ) and the permissions replaced.
