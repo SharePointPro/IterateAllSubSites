@@ -8,17 +8,16 @@ let EXCEPT_PERMISSION = 'BQ Administrators';
 
 //itterate through all the roles on the site, and update the permissions if they are currently REPLACE_PERMISSION
 //them with the above function 
-const updateRolesWithPermission = async (clientContext) => {
-    let web = clientContext.get_web();
+const updateRolesWithPermission = async (web, clientContext) => {
     let roles = web.get_roleAssignments();
     clientContext.load(roles);
-    await processRoleAssignments(clientContext, roles);
+    await processRoleAssignments(clientContext, web, roles);
 }
 
 //Iterate through all the role assignments. Role Assignments have Role Defintion Bindings which hold the permission level
 //and a member which is either the group or user that the permissions relate to
 //More information: https://docs.microsoft.com/en-us/previous-versions/office/developer/sharepoint-2010/ff409736%28v%3doffice.14%29
-const processRoleAssignments = async (clientContext, roles) => {
+const processRoleAssignments = async (clientContext, web, roles) => {
     return new Promise((resolve, reject) => {
         clientContext.executeQueryAsync(async () => {
             let roleEnumerator = roles.getEnumerator();
@@ -28,7 +27,7 @@ const processRoleAssignments = async (clientContext, roles) => {
                 let member = currentRole.get_member();
                 clientContext.load(roleDefinitionBindings);
                 clientContext.load(member);
-                await processBindings(clientContext, roleDefinitionBindings, member);
+                await processBindings(clientContext, web, roleDefinitionBindings, member);
             }
             resolve();
         }, (err, msg) => {
@@ -39,7 +38,7 @@ const processRoleAssignments = async (clientContext, roles) => {
 }
 
 //Bindings hold the actual permission level (ie "Full Control")
-const processBindings = async (clientContext, roleDefinitionBindings, member) => {
+const processBindings = async (clientContext, web, roleDefinitionBindings, member) => {
     return new Promise((resolve, reject) => {
         console.log("processBindings");
         clientContext.executeQueryAsync(async () => {
@@ -49,9 +48,10 @@ const processBindings = async (clientContext, roleDefinitionBindings, member) =>
                 if (roleDefBinding.get_name() === REPLACE_PERMISSION) {
                     if (member.get_title() !== EXCEPT_PERMISSION) {
                         console.log("updating permission");
-                        await updatePermission(member.get_id(), 
-                        NEW_PERMISSION, 
-                        clientContext);
+                        await updatePermission(clientContext,
+                            web, 
+                            member.get_id(), 
+                        NEW_PERMISSION);
                         console.log("member updated: ", member.get_title());
                     }
                 }
@@ -66,12 +66,12 @@ const processBindings = async (clientContext, roleDefinitionBindings, member) =>
 
 
 //Update the permission of the group
-const updatePermission = (groupMembershipID,
-    permissionLevelName,
-    clientContext) => {
+const updatePermission = (clientContext,
+    web,
+    groupMembershipID,
+    permissionLevelName) => {
     return new Promise((resolve, reject) => {
         console.log("update Permission");
-        let web = clientContext.get_web();
         //Get Role Definition
         let roleDef = web.get_roleDefinitions().getByName(permissionLevelName);
         let roleDefBinding = SP.RoleDefinitionBindingCollection.newObject(clientContext);
@@ -152,7 +152,6 @@ const iterate = async (functionToCall) => {
 
 //ENTRY POINT
 iterate(async (web, clientContext) => {
-    await updateRolesWithPermission(clientContext)
+    await updateRolesWithPermission(web, clientContext)
 	console.log(web.get_url());
 })
-
