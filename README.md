@@ -15,9 +15,9 @@ Update script and put automated process in the bottom inline function.
 	  console.log(web.get_url());
      });
 
-
-
 execute in Web Inspector
+
+**Note** Can only be run from SharePoint classic pages. SharePoint Modern experience does not expose the CSOM Javascript files.
 
 # Examples  
 **InstallApp.js** - Iterates through every site of a site collection and installs an APP from the Site Collection App Catalog using Rest. This example also injects jquery to make REST calls easier.
