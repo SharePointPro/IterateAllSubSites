@@ -1,6 +1,5 @@
 /** UPDATE PERMISSION FUNCTIONS */
 
-
 let NEW_PERMISSION = 'Full Control - No Subsite Creation';
 //any group with this permission, update with new permission
 let REPLACE_PERMISSION = 'Full Control';
@@ -98,7 +97,9 @@ const updatePermission = (groupMembershipID,
 /* END UPDATE PERMISSION FUNCTION */
 
 
+
 /* ITERATION FUNCTIONS - SEE HERE https://github.com/SharePointPro/IterateAllSubSites/ */
+
 const iterate = async (functionToCall) => {
 	let clientContext;
 
@@ -145,6 +146,7 @@ const iterate = async (functionToCall) => {
     console.log("finished");
 }
 
+/* END ITERATION FUNCTIONS */
 
 
 
