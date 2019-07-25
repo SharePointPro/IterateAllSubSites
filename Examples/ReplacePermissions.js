@@ -1,12 +1,12 @@
-/** UPDATE PERMISSION FUNCTIONS */
-
 let NEW_PERMISSION = 'Full Control - No Subsite Creation';
 //any group with this permission, update with new permission
 let REPLACE_PERMISSION = 'Full Control';
 //Dont replace permission if its the below group name
 let EXCEPT_PERMISSION = 'BQ Administrators';
 
-//itterate through all the roles on the site, and update the permissions if they are currently REPLACE_PERMISSION
+/** UPDATE PERMISSION FUNCTIONS */
+
+//iterate through all the roles on the site, and update the permissions if they are currently REPLACE_PERMISSION
 //them with the above function 
 const updateRolesWithPermission = async (web, clientContext) => {
     let roles = web.get_roleAssignments();
